@@ -8,7 +8,7 @@ function TodoList({ todo, index, markTodo, removeTodo, undoTodo, deleteTodo }) {
   return (
     <>
     <div className="todo">
-      <span style={{ textDecoration: todo.isDone ? "line-through" : "" } , { display: todo.deleted ? "none" : ""}}>{todo.text}</span>
+      <span style={{ textDecoration: todo.isDone ? "line-through" : "" , display: todo.deleted ? "none" : ""}}>{todo.text}</span>
       <div style={{ display: todo.deleted ? "none" : ""}}>
         <Button variant="outline-success" onClick={() => markTodo(index)}>✓</Button>{' '}
         <Button variant="outline-danger" onClick={() => removeTodo(index)}>✕</Button>
@@ -26,7 +26,6 @@ function TodoList({ todo, index, markTodo, removeTodo, undoTodo, deleteTodo }) {
 
 function FormTodo({ addTodo }) {
   const [value, setValue] = useState("");
-
   const handleSubmit = e => {
     e.preventDefault();
     if (!value) return;
@@ -52,7 +51,7 @@ function FormTodo({ addTodo }) {
 function App() {
   const [todos, setTodos] = useState([
     {
-      text: "This is a sampe todo",
+      text: "Learn React JS",
       isDone: false,
       deleted: false
     }
@@ -80,6 +79,7 @@ function App() {
     const newTodos = [...todos];
     //newTodos.splice(index, 1);
     newTodos[index].deleted = false;
+    newTodos[index].isDone = false;
     setTodos(newTodos);
   };
   const deleteTodo = index => {
